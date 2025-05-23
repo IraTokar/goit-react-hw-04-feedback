@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Feedback } from './Feedback/Feedback';
 import { Statistics } from './Statistics/Statistics';
+import { Notification } from './Notification/Notification';
 
 
 export const App = () => {
@@ -47,7 +48,11 @@ export const App = () => {
 
       </div>
         <div title='Statistics'>
-          <Statistics good={good} neutral={neutral} bad={bad} total={totalFeedback} positivePercentage={totalPercentage}/>
+        {totalFeedback > 0 ? (
+            <Statistics good={good} neutral={neutral} bad={bad} total={totalFeedback} positivePercentage={totalPercentage} />
+          ) : (
+            <Notification message="There is no feedback"/>
+          )}
         </div>
         </div>
     )
